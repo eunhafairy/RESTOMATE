@@ -5,30 +5,21 @@
  */
 package restomateapplication;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author pisonet2
- */
+
 public class EditPageController implements Initializable {
 
     
@@ -38,8 +29,12 @@ public class EditPageController implements Initializable {
     @FXML private TableColumn<RestoMateMenu, Double> priceColumn ;
     @FXML private TableColumn<RestoMateMenu, String> descColumn ;
     @FXML private TableColumn<RestoMateMenu, String> noColumn ;
-    
-    
+   
+    // declaring textfields for adding new instance of RestoMateMenu class
+    @FXML private TextField tField_foodName;
+    @FXML private TextField tField_foodDesc;
+    @FXML private TextField tField_foodPrice;
+    @FXML private TextField tField_foodNo;
    //methods for editing cells
    public void changeNameCellEvent(CellEditEvent eventNew){
   
@@ -80,6 +75,8 @@ public class EditPageController implements Initializable {
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         descColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         
+        // allow table to select multiple rows
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }    
     
     //method for adding table properties
@@ -89,6 +86,25 @@ public class EditPageController implements Initializable {
     food.add(new RestoMateMenu("Caprese Salad with Pesto Sauce","This is a description",756.00,1));
     
     return food;
+    
+    }
+    
+    //method for adding new instance of RestoMateMenu class
+    public void addNewInstanceFood()
+    {
+    RestoMateMenu newFood = new RestoMateMenu(tField_foodName.getText(), tField_foodDesc.getText(),Double.parseDouble(tField_foodPrice.getText()),Integer.parseInt(tField_foodNo.getText()));
+    tableView.getItems().add(newFood);
+    
+    }
+    
+    //method for deleting selected rows
+    public void deleteSelected(){
+    ObservableList<RestoMateMenu> rowsSelected, allFood;
+    allFood = tableView.getItems();
+    
+    //get the selected rows and delete it 
+    rowsSelected = tableView.getSelectionModel().getSelectedItems();
+    allFood.removeAll(rowsSelected);
     
     }
     
