@@ -39,7 +39,18 @@ public class HomePageController implements Initializable {
         
     
     }
+    public void gotoTable(ActionEvent event) throws IOException{
+        
+   Parent editPage = FXMLLoader.load(getClass().getResource("EditPage.fxml"));
+   Scene scene_editPage = new Scene(editPage);
+   
+   Stage window1 = (Stage)((Node)event.getSource()).getScene().getWindow();
+   
+   window1.setScene(scene_editPage);
+   window1.show();
+        
     
+    }
     /*
     code for menu and order
     

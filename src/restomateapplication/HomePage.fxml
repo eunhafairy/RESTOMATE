@@ -40,5 +40,6 @@
          </children>
       </HBox>
       <Button layoutX="382.0" layoutY="327.0" mnemonicParsing="false" text="Finish Purchase" />
+      <Button layoutX="499.0" layoutY="327.0" mnemonicParsing="false" onAction="#gotoTable" text="Edit" />
    </children>
 </AnchorPane>
