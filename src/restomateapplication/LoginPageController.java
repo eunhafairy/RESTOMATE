@@ -16,7 +16,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -30,20 +33,21 @@ public class LoginPageController implements Initializable {
    @FXML private Label incorrect;
   
   
- 
+
        
        
   
    public void loginClicked(ActionEvent event) throws IOException{
-   
 
- 
+
+
+
    if(String.valueOf(this.textBox_username.getText()).equals("admin") && String.valueOf(this.pwfield_password.getText()).equals("admin")){
+   
+      
    Parent homePage = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
    Scene scene_homePage = new Scene(homePage);
-   
    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-   
    window.setScene(scene_homePage);
    window.show();
    
@@ -52,7 +56,19 @@ public class LoginPageController implements Initializable {
    incorrect.setText("Invalid username/password");
   
    }
+ }
+
          
+   
+   
+  
+   public void exitClicked(ActionEvent event) throws IOException{
+  
+   Parent homePage = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+   Scene scene_homePage = new Scene(homePage);
+   Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+   window.setScene(scene_homePage);
+   window.close();
    
    }
    
@@ -63,7 +79,8 @@ public class LoginPageController implements Initializable {
        incorrect.setText(" ");
     
        
-    }    
+    }
+}    
     
-}
+
 

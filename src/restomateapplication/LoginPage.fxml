@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,23 +8,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="restomateapplication.LoginPageController">
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="restomateapplication.LoginPageController">
    <children>
-      <Pane layoutX="64.0" layoutY="28.0" prefHeight="445.0" prefWidth="222.0">
+      <HBox layoutY="80.0" prefHeight="100.0" prefWidth="350.0">
          <children>
-            <Label layoutX="10.0" layoutY="76.0" text="RestoMate" textAlignment="CENTER" textFill="#ff0f0f">
+            <Label text="RESTO" textFill="#332a29">
                <font>
-                  <Font name="Brush Script MT Italic" size="56.0" />
+                  <Font name="Gill Sans Ultra Bold" size="41.0" />
                </font>
             </Label>
-            <TextField fx:id="textBox_username" layoutX="37.0" layoutY="231.0" promptText="Username" />
-            <Button layoutX="88.0" layoutY="343.0" mnemonicParsing="false" onAction="#loginClicked" onKeyPressed="#loginClicked" text="Login" />
-            <Label fx:id="incorrect" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="390.0" text="Invalid username/password" textAlignment="CENTER" textFill="RED">
+            <Label text="MATE" textAlignment="CENTER" textFill="#fc3f3f">
+               <font>
+                  <Font name="Gill Sans Ultra Bold" size="41.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+         </padding>
+      </HBox>
+      <Pane layoutX="38.0" layoutY="241.0" prefHeight="237.0" prefWidth="274.0">
+         <children>
+            <TextField fx:id="textBox_username" layoutX="63.0" layoutY="40.0" promptText="Username" />
+            <Button layoutX="63.0" layoutY="121.0" mnemonicParsing="false" onAction="#loginClicked" prefHeight="25.0" prefWidth="52.0" text="Login" />
+            <Label fx:id="incorrect" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="181.0" text="Invalid username/password" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Label>
-            <PasswordField fx:id="pwfield_password" layoutX="37.0" layoutY="267.0" onAction="#loginClicked" onKeyPressed="#loginClicked" promptText="Password" />
+            <PasswordField fx:id="pwfield_password" layoutX="63.0" layoutY="79.0" promptText="Password" />
+            <Button layoutX="152.0" layoutY="121.0" mnemonicParsing="false" onAction="#exitClicked" prefHeight="25.0" prefWidth="52.0" text="Exit" />
          </children>
       </Pane>
    </children>
